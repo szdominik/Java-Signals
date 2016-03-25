@@ -21,12 +21,6 @@ public class RunnableConsoleThread extends RunnableThread implements Runnable {
 	    } catch(Exception ex) {
 	    	System.out.println("Thread " +  super.threadName + " interrupted.");
 	    }
-		/*
-		try {
-	        Thread.sleep(10000);
-	    } catch(InterruptedException ie) {
-	    	System.out.println("Thread " +  super.threadName + " interrupted.");
-	    }*/
 		
 		System.out.println("Exiting " +  super.threadName );
 	}

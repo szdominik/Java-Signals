@@ -15,6 +15,7 @@ public class RunnableTimeThread extends RunnableThread implements Runnable {
 		TimeSignalSupplier ts = new TimeSignalSupplier();
 		ts.every(1, TimeSteps.SECONDS, this.startTime);
 		
+		//9 másodpercig működik (hogy egyszer vége legyen...)
 		Timer exTimer = new Timer(true);
 		exTimer.schedule(new TimerTask() {
 			public void run() {
@@ -22,6 +23,7 @@ public class RunnableTimeThread extends RunnableThread implements Runnable {
 			}
 		}, 9000);
 		
+		//legalább 10 másodpercig működjön.
 		try {
 	        Thread.sleep(10000);
 	    } catch(InterruptedException ie) {

@@ -15,7 +15,7 @@ public class Beadando {
 		t.setLastElement('x');*/
 		
 		Signal<Integer> x = s.map(a -> a + 1);
-		Signal<Character> y = s.join(t, (a,b) -> b);
+		Signal<Integer> y = s.join(t, (a,b) -> a+b);
 		Signal<Integer> z = t.accumulate((st,b) -> b=='y' ? st+1 : st, 0);
 		
 		System.out.println(x.getLastElement());

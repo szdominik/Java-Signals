@@ -25,7 +25,7 @@ public class Signal<T> {
 		return new Signal<>(mapFunc.apply(lastElement));
 	}
 	
-	public <B> Signal<B> join(Signal<B> t, BiFunction<T, B, B> joinFunc) {
+	public <B, C> Signal<C> join(Signal<B> t, BiFunction<T, B, C> joinFunc) {
 		return new Signal<>(joinFunc.apply(this.lastElement, t.lastElement));
 	}
 	
