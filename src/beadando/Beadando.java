@@ -65,9 +65,9 @@ public class Beadando {
 	public static void main(String[] args) {
 		long startTime = System.currentTimeMillis();
 		
-		//tryTask1And2And3();
+		tryTask1And2And3();
 		//tryTask4And5(startTime);
 		//tryTask6();
-		tryTask7(startTime);
+		//tryTask7(startTime);
 	}
 }
