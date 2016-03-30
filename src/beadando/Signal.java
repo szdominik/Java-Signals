@@ -25,21 +25,20 @@ public class Signal<T> {
 	
 	//3. feladat
 	public Signal<T> map(Function<T, T> mapFunc) {
-		Signal<T> newSig = new Signal<>(mapFunc.apply(lastElement));
-		this.actions.forEach(act -> newSig.setAction(act));
+		Signal<T> newSig = new Signal<>(mapFunc.apply(this.lastElement));
+		this.setAction(() -> newSig.setLastElement(mapFunc.apply(this.lastElement)));
 		return newSig;
 	}
 	
 	public <B, C> Signal<C> join(Signal<B> t, BiFunction<T, B, C> joinFunc) {
-		Signal<C> newSig = new Signal<>(joinFunc.apply(this.lastElement, t.lastElement));
-		this.actions.forEach(act -> newSig.setAction(act));
-		t.actions.forEach(act -> newSig.setAction(act));
+		Signal<C> newSig = new Signal<>(joinFunc.apply(this.lastElement, t.getLastElement()));
+		this.setAction(() -> newSig.setLastElement(joinFunc.apply(this.lastElement, t.getLastElement())));
 		return newSig;
 	}
 	
 	public <B> Signal<B> accumulate(BiFunction<B, T, B> accFunc, B start) {
 		Signal<B> newSig = new Signal<>(accFunc.apply(start, this.lastElement));
-		this.actions.forEach(act -> newSig.setAction(act));
+		this.setAction(() -> newSig.setLastElement(accFunc.apply(start, this.lastElement)));
 		return newSig;
 	}	
 	
