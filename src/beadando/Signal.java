@@ -33,6 +33,7 @@ public class Signal<T> {
 	public <B, C> Signal<C> join(Signal<B> t, BiFunction<T, B, C> joinFunc) {
 		Signal<C> newSig = new Signal<>(joinFunc.apply(this.lastElement, t.getLastElement()));
 		this.setAction(() -> newSig.setLastElement(joinFunc.apply(this.lastElement, t.getLastElement())));
+		t.setAction(() -> newSig.setLastElement(joinFunc.apply(this.lastElement, t.getLastElement())));
 		return newSig;
 	}
 	
